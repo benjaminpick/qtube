@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="1.6" type="plugin" group="content" method="upgrade" >
-<install method="upgrade" version="1.5" type="plugin" group="content">
 	<name>Content - QTube</name>
 	<author>Massimo Giagnoni</author>
 	<authorUrl>http://www.latenight-coding.com</authorUrl>
 	<creationDate>July 2009</creationDate>
 	<copyright>Copyright (C) 2008 Massimo Giagnoni. All rights reserved.</copyright>
-	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPLv3</license>
 	<version>1.0.1</version>
 	<description>Insert YouTube hosted videos in Joomla! contents. Do not forget to go to Plugin Manager and publish the plugin. Online help at http://www.latenight-coding.com/joomla-addons/qtube.html</description>
 	<files>

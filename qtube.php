@@ -6,7 +6,7 @@
  * @package qtube
  * @author Massimo Giagnoni
  * @copyright Copyright (C) 2008 Massimo Giagnoni. All rights reserved.
- * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL
+ * @license http://www.gnu.org/copyleft/gpl.html GNU/GPLv3
  */
 
 defined( '_JEXEC' ) or die();
@@ -84,10 +84,10 @@ class plgContentQTube extends JPlugin {
 						$v = $this->params->get('autoplay', 0);
 						break;
 						case 'hd':
-						$v = $params->get('hd', 0);
+						$v = $this->params->get('hd', 0);
 						break;
 						case 'dc':
-						$v = $params->get('dc', 0);
+						$v = $this->params->get('dc', 0);
 						break;
 					}
 					$attrs[$n] = $v;
