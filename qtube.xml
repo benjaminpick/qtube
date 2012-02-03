@@ -12,7 +12,6 @@
 	<files>
 		<filename plugin="qtube">qtube.php</filename>
 	</files>
-<<<<<<< HEAD
 	<config>
 		 <fields name="params">
 		 	<fieldset name="basic">
