@@ -16,23 +16,29 @@ jimport( 'joomla.plugin.plugin' );
 
 class plgContentQTube extends JPlugin {
 	
-	function plgContentQTube(&$subject, $params)	{
+	function plgContentQTube(&$subject, $params) {
 		parent::__construct($subject, $params);
 	}
 
-	function onPrepareContent(&$article, &$params, $limitstart) {
-		global $mainframe;
+	function onContentPrepare($context, &$row, &$articleParams, $page=0 ) {
+		if (is_object($row))
+			$row->text = $this->process($row->text);
+		else
+			$row = $this->process($row);
 		
-		if(strpos($article->text, '{qtube') === false) {return;}
-		$r = '#{qtube\s*(.*?)}#';
-		$article->text = preg_replace_callback($r, array('plgContentQTube','callback'), $article->text);
 	}
 	
-	function callback($matches) {
-	
-		$plugin = &JPluginHelper::getPlugin('content', 'qtube');
-		$params = new JParameter($plugin->params);
+	function process($text)
+	{
+		if(strpos($text, '{qtube') === false) {return;}
 		
+		$r = '#{qtube\s*(.*?)}#';
+		$text = preg_replace_callback($r, array('plgContentQTube','callback'), $text);
+		
+		return $text;
+	}
+	
+	function callback($matches) {		
 		$r = '#(\w+)\s*:=\s*(?:(?:"([^"]*)")|([^\s]*))#';
 		if($r = preg_match_all($r, $matches[1], $m)) {
 			
@@ -51,31 +57,31 @@ class plgContentQTube extends JPlugin {
 				if($v == '') {
 					switch($n) {
 						case 'cl':
-						$v = $params->get('class', '');	
+						$v = $this->params->get('class', '');	
 						break;
 						case 'id':
-						$v = $params->get('id', '');	
+						$v = $this->params->get('id', '');	
 						break;
 						case 'w':
-						$v = $params->get('width', '425');	
+						$v = $this->params->get('width', '425');	
 						break;
 						case 'h':
-						$v = $params->get('height', '355');
+						$v = $this->params->get('height', '355');
 						break;
 						case 'rel':
-						$v = $params->get('related', 1);
+						$v = $this->params->get('related', 1);
 						break;
 						case 'c1':
-						$v = $params->get('color1', '');
+						$v = $this->params->get('color1', '');
 						break;
 						case 'c2':
-						$v = $params->get('color2', '');
+						$v = $this->params->get('color2', '');
 						break;
 						case 'b':
-						$v = $params->get('border', 0);
+						$v = $this->params->get('border', 0);
 						break;
 						case 'ap':
-						$v = $params->get('autoplay', 0);
+						$v = $this->params->get('autoplay', 0);
 						break;
 					}
 					$attrs[$n] = $v;
