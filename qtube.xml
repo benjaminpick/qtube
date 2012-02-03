@@ -1,35 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<install version="1.5" type="plugin" group="content">
+<install method="upgrade" version="1.5" type="plugin" group="content">
 	<name>Content - QTube</name>
 	<author>Massimo Giagnoni</author>
 	<authorUrl>http://www.latenight-coding.com</authorUrl>
-	<creationDate>March 2008</creationDate>
+	<creationDate>July 2009</creationDate>
 	<copyright>Copyright (C) 2008 Massimo Giagnoni. All rights reserved.</copyright>
 	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
-	<version>1.0.0</version>
-	<description>Insert YouTube hosted videos in Joomla! contents. Do not forget to go to Plugin Manager and publish the plugin. Online help at http://www.latenight-coding.com/joomla-addons/qtube.html
-	
-	Syntax: {qtube vid:=xxx}
-	or:	{qtube vid:=xxx w:=320 h:=267 c1:=00ff00 c2:=0000ff b:=1 rel:=1 ap:=1 cl:=class id:=id}</description>
+	<version>1.0.1</version>
+	<description>Insert YouTube hosted videos in Joomla! contents. Do not forget to go to Plugin Manager and publish the plugin. Online help at http://www.latenight-coding.com/joomla-addons/qtube.html</description>
 	<files>
 		<filename plugin="qtube">qtube.php</filename>
 	</files>
 	<params>
-		<param name="class" type="text" default="" size="15" label="Container class" description="&lt;i&gt;(Advanced)&lt;/i&gt;&lt;br /&gt;&lt;i&gt;qtube tag:&lt;/i&gt; cl&lt;br /&gt;&lt;br /&gt; CSS Class to use" />
-		<param name="id" type="text" default="" size="15" label="Container Id" description="&lt;i&gt;(Advanced)&lt;/i&gt;&lt;br /&gt;&lt;i&gt;qtube tag:&lt;/i&gt; id&lt;br /&gt;&lt;br /&gt; CSS Id to use" />
-		<param name="width" type="text" default="425" size="5" label="Width" description="&lt;i&gt;qtube tag:&lt;/i&gt; w&lt;br /&gt;&lt;br /&gt;Video Frame Width in Pixels" />
-		<param name="height" type="text" default="355" size="5" label="Height" description="&lt;i&gt;qtube tag:&lt;/i&gt; h&lt;br /&gt;&lt;br /&gt;Video Frame Height in Pixels" />
-		<param name="related" type="list" default="1" label="Related videos" description="&lt;i&gt;qtube tag:&lt;/i&gt; rel&lt;br /&gt;&lt;br /&gt;Links to related videos are displayed once video has finished to play">
+		<param name="class" type="text" default="" size="15" label="Container class" description="" />
+		<param name="id" type="text" default="" size="15" label="Container Id" description="" />
+		<param name="width" type="text" default="425" size="5" label="Width" description="" />
+		<param name="height" type="text" default="355" size="5" label="Height" description="" />
+		<param name="related" type="list" default="1" label="Related videos" description="">
             <option value="0">No</option>
             <option value="1">Yes</option>
 		</param>
-		<param name="color1" type="text" default="" size="5" label="Color1" description="&lt;i&gt;qtube tag:&lt;/i&gt; c1&lt;br /&gt;&lt;br /&gt;Color to format the video player button bar. Use hexadecimal values.&lt;br /&gt;&lt;br /&gt;&lt;i&gt;Example:&lt;/i&gt; b1b1b1" />
-		<param name="color2" type="text" default="" size="5" label="Color2" description="&lt;i&gt;qtube tag:&lt;/i&gt; c2&lt;br /&gt;&lt;br /&gt;Color to format the video player button bar. Use hexadecimal values.&lt;br /&gt;&lt;br /&gt;&lt;i&gt;Example:&lt;/i&gt; cfcfcf" />
-		<param name="border" type="list" default="0" label="Border" description="&lt;i&gt;qtube tag:&lt;/i&gt; b&lt;br /&gt;&lt;br /&gt;Draw a border around video player frame">
+		<param name="color1" type="text" default="" size="5" label="Color1" description="" />
+		<param name="color2" type="text" default="" size="5" label="Color2" description="" />
+		<param name="border" type="list" default="0" label="Border" description="">
             <option value="0">No</option>
             <option value="1">Yes</option>
 		</param>
-		<param name="autoplay" type="list" default="0" label="Autoplay" description="&lt;i&gt;qtube tag:&lt;/i&gt; ap&lt;br /&gt;&lt;br /&gt;Play the video as soon as the page is loaded, user do not need to start it manually with the 'play' button">
+		<param name="autoplay" type="list" default="0" label="Autoplay" description="">
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+		</param>
+		<param name="hd" type="list" default="0" label="HD" description="">
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+		</param>
+		<param name="dc" type="list" default="0" label="Delayed cookies" description="">
             <option value="0">No</option>
             <option value="1">Yes</option>
 		</param>

@@ -2,7 +2,7 @@
 /**
  * QTube Plugin
  *
- * @version 1.0.0
+ * @version 1.0.1
  * @package qtube
  * @author Massimo Giagnoni
  * @copyright Copyright (C) 2008 Massimo Giagnoni. All rights reserved.
@@ -39,12 +39,12 @@ class plgContentQTube extends JPlugin {
 			if(array_search('debug', $m[1]) !== false) {
 				return '{qtube ' . str_replace(' debug:=1', '', $matches[1]) . '}';
 			}
-			$attrs = array('vid'=>'', 'w'=>'', 'h'=>'', 'rel'=>'', 'c1'=>'', 'c2'=>'', 'b'=>'', 'ap'=>'', 'cl'=>'', 'id'=>'');
+			$attrs = array('vid'=>'', 'w'=>'', 'h'=>'', 'rel'=>'', 'c1'=>'', 'c2'=>'', 'b'=>'', 'ap'=>'', 'hd'=>'', 'dc'=>'', 'cl'=>'', 'id'=>'');
 			for($i=0; $i < $r; $i++) {
 				$n= $m[1][$i];
 				$v = $m[2][$i] ? $m[2][$i] : $m[3][$i];
 				if (array_key_exists($n, $attrs)) {
-					$attrs[$n] = htmlspecialchars($v, ENT_QUOTES, 'UTF-8');
+					$attrs[$n] = htmlspecialchars($v);
 				}
 			}
 			foreach($attrs as $n=>$v) {
@@ -76,6 +76,12 @@ class plgContentQTube extends JPlugin {
 						break;
 						case 'ap':
 						$v = $params->get('autoplay', 0);
+						break;
+						case 'hd':
+						$v = $params->get('hd', 0);
+						break;
+						case 'dc':
+						$v = $params->get('dc', 0);
 						break;
 					}
 					$attrs[$n] = $v;
@@ -114,15 +120,30 @@ class plgContentQTube extends JPlugin {
 						$attrs[$n] = '';
 					}
 					break;
+					case 'hd':
+					if($v > 0) { 
+						$attrs[$n] = "&amp;hd=$v"; 
+					} else {
+						$attrs[$n] = '';
+					}
+					break;
+					case 'dc':
+						if($v > 0) {
+							$attrs[$n] = 'http://www.youtube-nocookie.com/v/';
+						} else {
+							$attrs[$n] = 'http://www.youtube.com/v/';
+						}
+					break;
 				}
 			}
 			
 			if($attrs['vid'] == '') {
 				$r = '{qtube error: video id missing!}';
 			} else {
+				$url = $attrs['dc'].$attrs['vid'].'&amp;fs=1'.$attrs['rel'].$attrs['c1'].$attrs['c2'].$attrs['b'].$attrs['hd'].$attrs['ap'];
 				$r = <<<EOD
-<div align="center"><object{$attrs['cl']}{$attrs['id']} type="application/x-shockwave-flash"{$attrs['w']}{$attrs['h']} data="http://www.youtube.com/v/{$attrs['vid']}{$attrs['rel']}{$attrs['c1']}{$attrs['c2']}{$attrs['b']}{$attrs['ap']}">
-<param name="movie" value="http://www.youtube.com/v/{$attrs['vid']}{$attrs['rel']}{$attrs['c1']}{$attrs['c2']}{$attrs['b']}{$attrs['ap']}"></param></object></div>
+<object{$attrs['cl']}{$attrs['id']} type="application/x-shockwave-flash"{$attrs['w']}{$attrs['h']} data="$url">
+<param name="movie" value="$url"></param><param name="wmode" value="transparent"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param></object>
 EOD;
 			}
 			return $r;
