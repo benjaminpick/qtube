@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension version="1.6" type="plugin" group="content">
+<extension version="1.6" type="plugin" group="content" method="upgrade" >
+<install method="upgrade" version="1.5" type="plugin" group="content">
 	<name>Content - QTube</name>
 	<author>Massimo Giagnoni</author>
 	<authorUrl>http://www.latenight-coding.com</authorUrl>
-	<creationDate>March 2008</creationDate>
+	<creationDate>July 2009</creationDate>
 	<copyright>Copyright (C) 2008 Massimo Giagnoni. All rights reserved.</copyright>
 	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
-	<version>1.0.0</version>
-	<description>Insert YouTube hosted videos in Joomla! contents. Do not forget to go to Plugin Manager and publish the plugin. Online help at http://www.latenight-coding.com/joomla-addons/qtube.html
-	
-	Syntax: {qtube vid:=xxx}
-	or:	{qtube vid:=xxx w:=320 h:=267 c1:=00ff00 c2:=0000ff b:=1 rel:=1 ap:=1 cl:=class id:=id}</description>
+	<version>1.0.1</version>
+	<description>Insert YouTube hosted videos in Joomla! contents. Do not forget to go to Plugin Manager and publish the plugin. Online help at http://www.latenight-coding.com/joomla-addons/qtube.html</description>
 	<files>
 		<filename plugin="qtube">qtube.php</filename>
 	</files>
+<<<<<<< HEAD
 	<config>
 		 <fields name="params">
 		 	<fieldset name="basic">
@@ -35,6 +34,15 @@
 		            <option value="0">No</option>
 		            <option value="1">Yes</option>
 				</field>
+				<field name="hd" type="list" default="0" label="HD" description="">
+        		    <option value="0">No</option>
+            		<option value="1">Yes</option>
+				</field>
+				<field name="dc" type="list" default="0" label="Delayed cookies" description="">
+            		<option value="0">No</option>
+            		<option value="1">Yes</option>
+				</field>
+				
 			</fieldset>
 		</fields>  
 	</config>
