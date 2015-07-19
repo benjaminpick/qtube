@@ -2,7 +2,7 @@
 /**
  * QTube Plugin
  *
- * @version 1.1.1
+ * @version 1.1.2
  * @package qtube
  * @author Massimo Giagnoni
  * @copyright Copyright (C) 2008 Massimo Giagnoni. All rights reserved.
@@ -39,7 +39,7 @@ class plgContentQTube extends JPlugin {
 			if(array_search('debug', $m[1]) !== false) {
 				return '{qtube ' . str_replace(' debug:=1', '', $matches[1]) . '}';
 			}
-			$attrs = array('vid'=>'', 'w'=>'', 'h'=>'', 'c1'=>'', 'c2'=>'', 'b'=>'', 'ap'=>'', 'hd'=>'', 'dc'=>'', 'id'=>'');
+			$attrs = array('vid'=>'', 'w'=>'', 'h'=>'', 'ap'=>'', 'id'=>'');
 			for($i=0; $i < $r; $i++) {
 				$n= $m[1][$i];
 				$v = $m[2][$i] ? $m[2][$i] : $m[3][$i];
@@ -82,7 +82,7 @@ class plgContentQTube extends JPlugin {
 					break;
 					case 'ap':
 					if($v > 0) { 
-						$attrs[$n] = "&amp;autoplay=$v"; 
+						$attrs[$n] = "?autoplay=$v";
 					} else {
 						$attrs[$n] = '';
 					}
@@ -93,9 +93,11 @@ class plgContentQTube extends JPlugin {
 			if($attrs['vid'] == '') {
 				$r = '{qtube error: video id missing!}';
 			} else {
-				$url = $attrs['url'].$attrs['vid'].'?'.$attrs['ap'];
+				$url = $attrs['url'].$attrs['vid'].$attrs['ap'];
 				$r = <<<EOD
-<iframe{$attrs['id']} type="text/html"{$attrs['w']}{$attrs['h']} src="$url" allowfullscreen="true" frameborder="0">
+
+<iframe{$attrs['id']} type="text/html"{$attrs['w']}{$attrs['h']} src="$url" allowfullscreen="true" frameborder="0"> </iframe>
+
 EOD;
 			}
 			return $r;
