@@ -2,7 +2,7 @@
 /**
  * QTube Plugin
  *
- * @version 1.1.0
+ * @version 1.1.1
  * @package qtube
  * @author Massimo Giagnoni
  * @copyright Copyright (C) 2008 Massimo Giagnoni. All rights reserved.
@@ -93,9 +93,9 @@ class plgContentQTube extends JPlugin {
 			if($attrs['vid'] == '') {
 				$r = '{qtube error: video id missing!}';
 			} else {
-				$url = $attrs['url'].$attrs['vid'].'&amp;fs=1'.$attrs['ap'];
+				$url = $attrs['url'].$attrs['vid'].'?'.$attrs['ap'];
 				$r = <<<EOD
-<iframe{$attrs['id']} type="text/html"{$attrs['w']}{$attrs['h']} src="$url" frameborder="0">
+<iframe{$attrs['id']} type="text/html"{$attrs['w']}{$attrs['h']} src="$url" allowfullscreen="true" frameborder="0">
 EOD;
 			}
 			return $r;
