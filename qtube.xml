@@ -6,7 +6,7 @@
 	<creationDate>July 2009</creationDate>
 	<copyright>Copyright (C) 2008 Massimo Giagnoni. All rights reserved.</copyright>
 	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
-	<version>1.0.1</version>
+	<version>1.1.0</version>
 	<description>Insert YouTube hosted videos in Joomla! contents. Do not forget to go to Plugin Manager and publish the plugin. Online help at http://www.latenight-coding.com/joomla-addons/qtube.html</description>
 	<files>
 		<filename plugin="qtube">qtube.php</filename>
@@ -16,25 +16,7 @@
 		<param name="id" type="text" default="" size="15" label="Container Id" description="" />
 		<param name="width" type="text" default="425" size="5" label="Width" description="" />
 		<param name="height" type="text" default="355" size="5" label="Height" description="" />
-		<param name="related" type="list" default="1" label="Related videos" description="">
-            <option value="0">No</option>
-            <option value="1">Yes</option>
-		</param>
-		<param name="color1" type="text" default="" size="5" label="Color1" description="" />
-		<param name="color2" type="text" default="" size="5" label="Color2" description="" />
-		<param name="border" type="list" default="0" label="Border" description="">
-            <option value="0">No</option>
-            <option value="1">Yes</option>
-		</param>
 		<param name="autoplay" type="list" default="0" label="Autoplay" description="">
-            <option value="0">No</option>
-            <option value="1">Yes</option>
-		</param>
-		<param name="hd" type="list" default="0" label="HD" description="">
-            <option value="0">No</option>
-            <option value="1">Yes</option>
-		</param>
-		<param name="dc" type="list" default="0" label="Delayed cookies" description="">
             <option value="0">No</option>
             <option value="1">Yes</option>
 		</param>
